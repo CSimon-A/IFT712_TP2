@@ -136,7 +136,7 @@ class ClassifieurLineaire:
 
         for epoch in range(n_epochs):
             for i in range(n_samples):
-                linear_output = np.dot(x_train[i], self.w) + self.w_0
+                linear_output = self.prediction(x_train[i])
                 y_pred = 1 if linear_output >= 0 else 0
                 
                 if y_pred != t_train[i]:
@@ -205,7 +205,7 @@ class ClassifieurLineaire:
         """
         # AJOUTER CODE ICI
 
-        return (np.dot(x, self.w) + self.w_0 >= 0).astype(int)
+        return (np.dot(x, self.w) + self.w_0)
 
     @staticmethod
     def erreur(t, prediction):
