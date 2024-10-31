@@ -220,7 +220,10 @@ class ClassifieurLineaire:
         NOTE: Ne nécéssite aucune boucle.
         """
         # AJOUTER CODE ICI
-        return np.mean(t != prediction)
+
+        prediction = np.where(prediction >= 0, 1, 0)
+
+        return t != prediction
 
     def afficher_donnees_et_modele(self, x_train, t_train, x_test, t_test):
         """
